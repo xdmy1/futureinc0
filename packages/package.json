@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "resize-observer": "^1.0.4"
+  }
+}
