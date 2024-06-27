@@ -1,0 +1,29 @@
+:root {
+    --primary: #061525;
+    --accent: #237FE2;
+    --gray: #393C41;
+}
+
+#business h2 {
+    max-width: 400px;
+}
+
+#business img {
+    object-position: left;
+}
+
+#invest img {
+    object-position: right;
+}
+
+#brand h2 {
+    max-width: 330px;
+}
+
+#brand img {
+    object-position: 75% 50%;
+}
+
+#brand .info-content p {
+    margin-bottom: 1rem;
+}

@@ -4,16 +4,12 @@
     --gray: #393C41;
 }
 
-.ev-main {
-    margin-top: 5.9rem;
-}
-
 .page-header {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 5rem;
+    padding: 8rem;
     color: white;
     background-color: var(--primary);
 }

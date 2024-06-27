@@ -32,6 +32,10 @@ textarea {
     font: inherit;
 }
 
+a {
+    text-decoration: none;
+}
+
 button {
     font-weight: 500;
 }
@@ -46,18 +50,58 @@ nav {
     width: 100%;
     right: 0;
     top: 0;
+    z-index: 1;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .desktop-nav {
-    background-color: white;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3.25rem;
     gap: 3rem;
+}
+
+.nav-button {
+    padding: 0.5rem 2.25rem;
+    background-color: transparent;
+    outline: 2px solid white;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nav-button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: var(--primary);
+    opacity: 0.9;
+}
+
+nav.scrolled .desktop-nav {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+nav.scrolled .right li a {
+    color: var(--primary);
+}
+
+nav.scrolled .nav-button {
+    padding: 0.5rem 2.25rem;
+    background-color: var(--primary);
+    outline: 2px solid var(--primary);
+    border: none;
+    border-radius: 3px;
+    color: white;
+}
+
+nav.scrolled .nav-button:hover {
+    cursor: pointer;
+    opacity: 0.9;
 }
 
 .nav-logo {
@@ -72,7 +116,7 @@ nav {
 
 .desktop-nav .right li a {
     gap: 1rem;
-    color: var(--primary);
+    color: white;
     font-weight: 400;
     position: relative;
 }
@@ -91,20 +135,31 @@ nav {
     right: 0;
     left: 0;
     justify-content: space-between;
+    background-color: transparent;
     padding-inline: 5rem;
-}
-
-.mobile-nav .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-weight: 600;
-    color: var(--primary);
 }
 
 .mobile-nav li a {
     color: var(--primary);
     font-size: 1.25rem;
+}
+
+nav.scrolled .mobile-nav .top {
+    background-color: white;
+}
+
+.mobile-nav.show .top {
+    background-color: white;
+}
+
+.mobile-nav .nav-button {
+    outline: 2px solid var(--primary);
+}
+
+.mobile-nav.show .nav-button {
+    background-color: var(--primary);
+    outline: 2px solid var(--primary);
+    color: white;
 }
 
 .mobile-nav.show .burger {
@@ -145,6 +200,7 @@ nav {
 
 .mobile-nav .mobile-li {
     transform: translateX(100%);
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,26 +223,12 @@ nav a {
     text-decoration: none;
 }
 
-.nav-button {
-    padding: 0.6rem 2.25rem;
-    background-color: var(--primary);
-    border: none;
-    border-radius: 3px;
-    color: white;
-    font-size: 16px;
-}
-
-.nav-button:hover {
-    cursor: pointer;
-    opacity: 0.9;
-}
-
 .hero-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
-    height: fit-content;
-    padding-block: 12rem;
+    height: 100vh;
     background-size: cover;
     border-image-source: linear-gradient(#001f3f85, #001f3f85);
     border-image-slice: fill 1;
@@ -284,12 +326,12 @@ nav a {
 
 
 
-.history-section {
+.info-section.left {
     background-color: var(--primary);
     color: white;
 }
 
-.text-history {
+.info-section.left .text-info {
     padding-right: 0rem;
     padding-left: 3.25rem;
 }
@@ -360,7 +402,7 @@ nav a {
 
 
 .text-mission p {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     max-width: 540px;
 }
 
@@ -370,7 +412,6 @@ nav a {
     border-radius: 4px;
     background-color: #061525;
     color: white;
-    margin-top: 1rem;
 }
 
 .mission2-section .more-btn {
@@ -500,6 +541,8 @@ nav a {
 .footer-logo {
     width: 9rem;
     transform: translateY(5px);
+    position: relative;
+    z-index: -1;
 }
 
 .footer-contact-icon {
@@ -509,6 +552,8 @@ nav a {
 .footer-contact-icon.phone {
     width: 30px;
     translate: -4px;
+    position: relative;
+    z-index: -1;
 }
 
 .footer-social-icons img {
@@ -543,12 +588,28 @@ nav a {
         flex-direction: column-reverse;
     }
 
+    .mission2-section .more-btn {
+        margin-bottom: 4rem;
+    }
+
+    .mission1-section img {
+        min-width: 250px;
+    }
+
+    .mission2-section img {
+        min-width: 250px;
+    }
+
     .text-mission h3 {
         text-align: center;
     }
 
-    .history-content {
+    .info-section.left .info-content {
         flex-direction: column-reverse;
+    }
+
+    .info-section.left .text-info {
+        padding: 0 2rem;
     }
 
     .info-content {
@@ -568,12 +629,12 @@ nav a {
     }
 
     .text-experience {
-        padding-top: 4rem;
+        padding-top: 2.5rem;
         padding-bottom: 0;
     }
 
-    .text-history {
-        padding-bottom: 2.5rem;
+    .info-section.left .text-info {
+        padding-bottom: 4rem;
     }
 
     .mission2-section .text-mission {
@@ -588,7 +649,6 @@ nav a {
     .text-info p {
         text-align: center;
         text-wrap: wrap;
-        margin: auto;
     }
 }
 
@@ -613,6 +673,11 @@ nav a {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .hero-section {
+        height: fit-content;
+        padding-block: 8rem;
     }
 
     .nav-button {
@@ -649,7 +714,6 @@ nav a {
     }
 
     .nav-button {
-        padding: 0.75rem 2.75rem;
         font-size: 1.5rem;
     }
 
